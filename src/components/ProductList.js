@@ -1,6 +1,8 @@
 import React from "react";
 import Product from "./Product";
 import Title from "./Title";
+import { ProductConsumer } from "../context";
+import axios from "axios";
 
 const ProductList = (props) => {
   return (
@@ -8,11 +10,16 @@ const ProductList = (props) => {
       <div className="py-5">
         <div className="container">
           <Title name="our" title="products" />
-          <div className="row"></div>
+          <div className="row">
+            <ProductConsumer>
+              {(value) => {
+                console.log(value);
+              }}
+            </ProductConsumer>
+          </div>
         </div>
       </div>
     </>
-    // <Product />
   );
 };
 
