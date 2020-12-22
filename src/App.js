@@ -1,24 +1,48 @@
-import logo from "./logo.svg";
-import { Switch, Route } from "react-router";
-import "./App.css";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Navbar from "./components/Navbar";
-import ProductList from "./components/ProductList";
-import Details from "./components/Details";
-import Cart from "./components/Cart";
-import Default from "./components/Default";
+import { Route, Switch } from "react-router-dom";
+import Header from "./components/Nav";
+import Products from "./pages/Products";
+import Show from "./pages/Show";
+import Cart from "./pages/Cart";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Thanks from "./pages/Thanks";
+
+export const AppContext = React.createContext(null);
 
 function App() {
+  const [appState, setAppState] = React.useState({
+    url: "http://localhost:3000",
+    product: null,
+    inCart: false,
+    orderId: null,
+    userId: null,
+    token: null,
+  });
+
   return (
-    <>
-      <Navbar></Navbar>
-      <Switch>
-        <Route exact path="/" component={ProductList} />
-        <Route path="/details" component={Details} />
-        <Route path="/Cart" component={Cart} />
-        <Route component={Default} />
-      </Switch>
-    </>
+    <AppContext.Provider value={{ appState, setAppState }}>
+      <Header />
+      <main>
+        <Switch>
+          <Route exact path="/" render={(rp) => <Products {...rp} />} />
+          <Route
+            exact
+            path="/show"
+            render={(rp) => <Show {...rp} item={appState.item} />}
+          />
+          <Route
+            exact
+            path="/cart"
+            render={(rp) => <Cart {...rp} item={appState.item} />}
+          />
+          <Route exact path="/login" render={(rp) => <Login {...rp} />} />
+          <Route exact path="/signup" render={(rp) => <Signup {...rp} />} />
+          <Route exact path="/thanks" render={(rp) => <Thanks {...rp} />} />
+        </Switch>
+      </main>
+    </AppContext.Provider>
   );
 }
 
