@@ -31,12 +31,12 @@ function App() {
           <Route
             exact
             path="/show"
-            render={(rp) => <Show {...rp} item={appState.product} />}
+            render={(rp) => <Show {...rp} product={appState.product} />}
           />
           <Route
             exact
             path="/cart"
-            render={(rp) => <Cart {...rp} item={appState.product} />}
+            render={(rp) => <Cart {...rp} product={appState.product} />}
           />
           <Route exact path="/login" render={(rp) => <Login {...rp} />} />
           <Route exact path="/signup" render={(rp) => <Signup {...rp} />} />

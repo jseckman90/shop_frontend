@@ -1,17 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { AppContext } from "../App";
 
 const Show = (props) => {
   const { appState, setAppState } = React.useContext(AppContext);
   const { url, inCart, orderId, userId, token } = appState;
   const { product } = props;
+  console.log(product);
 
   const isUserLoggedIn = () => {
     if (userId && token) {
       createOrder(product);
     } else {
-      <Link to="/login" />;
+      props.history.push("/login");
     }
   };
 
@@ -23,7 +23,7 @@ const Show = (props) => {
           "Content-Type": "application/JSON",
           Authorization: `bearer ${token}`,
         },
-        body: JSON.stringify({ user_id: userId }),
+        body: JSON.stringify({ qty: 1, user_id: userId }),
       });
       const data = await response.json();
       await createOrderItem(data.id, product);
@@ -38,6 +38,7 @@ const Show = (props) => {
   };
 
   const createOrderItem = async (id, product) => {
+    // create new product with order_id
     const orderItem = { ...product, order_id: id };
     await fetch(`${url}/order_items`, {
       method: "POST",

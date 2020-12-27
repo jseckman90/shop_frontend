@@ -15,6 +15,7 @@ const Product = (props) => {
         to="/show"
         onClick={() => {
           handleClick(product);
+          console.log(product);
         }}>
         <img src={product.img} class="card-img-top" alt={product.name} />
       </Link>

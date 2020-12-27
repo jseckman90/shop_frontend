@@ -2,7 +2,7 @@ import React from "react";
 import { AppContext } from "../App";
 import Product from "../components/Product";
 
-const Products = (props) => {
+const Items = (props) => {
   const { appState } = React.useContext(AppContext);
   const { url } = appState;
   const [products, setProducts] = React.useState([]);
@@ -32,4 +32,4 @@ const Products = (props) => {
   return products.length > 0 ? loaded() : <h3>Loading...</h3>;
 };
 
-export default Products;
+export default Items;
