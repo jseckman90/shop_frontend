@@ -17,14 +17,11 @@ const CheckOut = (props) => {
     (acc, val) => parseInt(acc) + parseInt(val)
   );
 
-  const resetCart = () => {
-    setAppState({ ...appState, inCart: false, orderId: null });
-  };
-
   return (
     <div>
       <h1>Your Cart</h1>
       <hr />
+      <h3>Order Number:{orderId}</h3>
       <h2>Item</h2>
       {productNames.map((product) => (
         <p>{product}</p>
@@ -34,8 +31,8 @@ const CheckOut = (props) => {
       <p>{priceTotal}</p>
       <hr />
       <h1>Total</h1>
-      <h2 style={{ color: "red" }}>{parseInt(priceTotal)}</h2>
-      <Link to="/thanks" orderId={orderId} onClick={() => resetCart()}>
+      <h2>{parseInt(priceTotal)}</h2>
+      <Link to="/thanks" orderId={orderId}>
         <button>Check Out</button>
       </Link>
     </div>

@@ -48,6 +48,7 @@ const Cart = (props) => {
   }, []);
 
   const loaded = () => {
+    console.log(orderId);
     return (
       <div>
         <div>
@@ -61,7 +62,7 @@ const Cart = (props) => {
             );
           })}
         </div>
-        <CheckOut products={order.order_items} orderId={order.orderId} />
+        <CheckOut products={order.order_items} orderId={orderId} />
       </div>
     );
   };

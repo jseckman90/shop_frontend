@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Thanks from "./pages/Thanks";
 import Footer from "./components/Footer";
+import OrderHistory from "./pages/OrderHistory";
 
 export const AppContext = React.createContext(null);
 
@@ -29,18 +30,23 @@ function App() {
         <Switch>
           <Route exact path="/" render={(rp) => <Products {...rp} />} />
           <Route
-            exact
             path="/show"
             render={(rp) => <Show {...rp} product={appState.product} />}
           />
           <Route
-            exact
             path="/cart"
             render={(rp) => <Cart {...rp} product={appState.product} />}
           />
-          <Route exact path="/login" render={(rp) => <Login {...rp} />} />
-          <Route exact path="/signup" render={(rp) => <Signup {...rp} />} />
-          <Route exact path="/thanks" render={(rp) => <Thanks {...rp} />} />
+          <Route path="/login" render={(rp) => <Login {...rp} />} />
+          <Route path="/signup" render={(rp) => <Signup {...rp} />} />
+          <Route
+            path="/thanks"
+            render={(rp) => <Thanks {...rp} orderId={appState.orderId} />}
+          />
+          <Route
+            path="/orderhistory"
+            render={(rp) => <OrderHistory {...rp} />}
+          />
         </Switch>
       </main>
       <Footer />

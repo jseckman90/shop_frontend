@@ -54,6 +54,11 @@ const Nav = (props) => {
               ) : null}
             </Link>
           </li>
+          <li class="nav-item">
+            <Link to="/orderhistory" class="nav-link">
+              Order History
+            </Link>
+          </li>
           {token ? logOut() : null}
           <li class="nav-item">
             <Link to="/login" class="nav-link">
