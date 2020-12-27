@@ -22,24 +22,29 @@ const OrderHistory = (props) => {
     return (
       <div>
         <div className="container">
-          {orders.map((order) => (
-            <div style={{ border: "2px solid black" }}>
-              <h3>order ID: {order.id}</h3>
-              <h5>user ID: {order.user_id}</h5>
+          {orders.map((order) =>
+            userId === order.user_id ? (
+              <div style={{ border: "2px solid black" }}>
+                <h3>
+                  Order Number:{" "}
+                  <span style={{ color: "blue" }}>{order.id}</span>
+                </h3>
+                <h5>user ID: {order.user_id}</h5>
 
-              <div>
-                <h5>Items:</h5>
+                <div>
+                  <h5>Items:</h5>
 
-                {order.order_items.map((product) => (
-                  <div style={{ border: "1px solid red", margin: "10px" }}>
-                    <p>{product.name}</p>
-                    <p>{product.price}</p>
-                    <img src={product.img} style={{ height: "5rem" }} />
-                  </div>
-                ))}
+                  {order.order_items.map((product) => (
+                    <div style={{ border: "1px solid red", margin: "10px" }}>
+                      <p>{product.name}</p>
+                      <p>{product.price}</p>
+                      <img src={product.img} style={{ height: "5rem" }} />
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ) : null
+          )}
         </div>
       </div>
     );

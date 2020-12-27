@@ -6,16 +6,6 @@ const Nav = (props) => {
   const { appState, setAppState } = React.useContext(AppContext);
   const { inCart, token } = appState;
 
-  const logOut = () => {
-    return (
-      <Link
-        to="/"
-        onClick={() => setAppState({ ...appState, token: null, userId: null })}>
-        Log Out
-      </Link>
-    );
-  };
-
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">
@@ -54,22 +44,37 @@ const Nav = (props) => {
               ) : null}
             </Link>
           </li>
-          <li class="nav-item">
-            <Link to="/orderhistory" class="nav-link">
-              Order History
+          {token ? (
+            <li class="nav-item">
+              <Link to="/orderhistory" class="nav-link">
+                Order History
+              </Link>
+            </li>
+          ) : null}
+
+          {token ? (
+            <Link
+              to="/"
+              onClick={() =>
+                setAppState({ ...appState, token: null, userId: null })
+              }>
+              Log Out
             </Link>
-          </li>
-          {token ? logOut() : null}
-          <li class="nav-item">
-            <Link to="/login" class="nav-link">
-              Login
-            </Link>
-          </li>
-          <li class="nav-item">
-            <Link to="/signup" class="nav-link">
-              Signup
-            </Link>
-          </li>
+          ) : null}
+          {!token ? (
+            <>
+              <li class="nav-item">
+                <Link to="/login" class="nav-link">
+                  Login
+                </Link>
+              </li>
+              <li class="nav-item">
+                <Link to="/signup" class="nav-link">
+                  Signup
+                </Link>
+              </li>{" "}
+            </>
+          ) : null}
         </ul>
       </div>
     </nav>
