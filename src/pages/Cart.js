@@ -61,7 +61,7 @@ const Cart = (props) => {
             );
           })}
         </div>
-        <CheckOut products={order.order_items} />
+        <CheckOut products={order.order_items} orderId={order.orderId} />
       </div>
     );
   };

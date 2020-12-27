@@ -1,7 +1,8 @@
 import React from "react";
 
 const Thanks = (props) => {
-  return <h1>Thank you for your order</h1>;
+  const { orderId } = props;
+  return <h1>Order Placed. Your order number is {orderId} </h1>;
 };
 
 export default Thanks;

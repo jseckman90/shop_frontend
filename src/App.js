@@ -8,6 +8,7 @@ import Cart from "./pages/Cart";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Thanks from "./pages/Thanks";
+import Footer from "./components/Footer";
 
 export const AppContext = React.createContext(null);
 
@@ -30,18 +31,19 @@ function App() {
           <Route
             exact
             path="/show"
-            render={(rp) => <Show {...rp} item={appState.item} />}
+            render={(rp) => <Show {...rp} item={appState.product} />}
           />
           <Route
             exact
             path="/cart"
-            render={(rp) => <Cart {...rp} item={appState.item} />}
+            render={(rp) => <Cart {...rp} item={appState.product} />}
           />
           <Route exact path="/login" render={(rp) => <Login {...rp} />} />
           <Route exact path="/signup" render={(rp) => <Signup {...rp} />} />
           <Route exact path="/thanks" render={(rp) => <Thanks {...rp} />} />
         </Switch>
       </main>
+      <Footer />
     </AppContext.Provider>
   );
 }

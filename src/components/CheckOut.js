@@ -4,7 +4,7 @@ import { AppContext } from "../App";
 
 const CheckOut = (props) => {
   const { appState, setAppState } = React.useContext(AppContext);
-  const { products } = props;
+  const { products, orderId } = props;
   let productNames = [];
   let productPrices = [];
 
@@ -17,7 +17,7 @@ const CheckOut = (props) => {
     (acc, val) => parseInt(acc) + parseInt(val)
   );
 
-  const changeAppState = () => {
+  const resetCart = () => {
     setAppState({ ...appState, inCart: false, orderId: null });
   };
 
@@ -35,7 +35,7 @@ const CheckOut = (props) => {
       <hr />
       <h1>Total</h1>
       <h2 style={{ color: "red" }}>{parseInt(priceTotal)}</h2>
-      <Link to="/thanks" onClick={() => changeAppState()}>
+      <Link to="/thanks" orderId={orderId} onClick={() => resetCart()}>
         <button>Check Out</button>
       </Link>
     </div>
