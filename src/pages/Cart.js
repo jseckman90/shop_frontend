@@ -67,11 +67,7 @@ const Cart = (props) => {
     );
   };
 
-  return order !== null ? (
-    loaded()
-  ) : (
-    <h1 style={{ textAlign: "center" }}>Your Cart is empty</h1>
-  );
+  return order !== null ? loaded() : <h1>Your Cart is empty</h1>;
 };
 
 export default Cart;

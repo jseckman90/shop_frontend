@@ -1,6 +1,7 @@
 import React from "react";
 import { AppContext } from "../App";
 import Product from "../components/Product";
+import { Grid } from "@material-ui/core";
 
 const Items = (props) => {
   const { appState } = React.useContext(AppContext);
@@ -19,13 +20,13 @@ const Items = (props) => {
 
   const loaded = () => {
     return (
-      <div>
-        <div className="container">
-          {products.map((product) => (
+      <Grid container spacing={2}>
+        {products.map((product) => (
+          <Grid item xs={12} sm={4}>
             <Product product={product} key={product.id} />
-          ))}
-        </div>
-      </div>
+          </Grid>
+        ))}
+      </Grid>
     );
   };
 

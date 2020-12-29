@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { AppContext } from "../App";
 
-const Thanks = (props) => {
+const OrderConfirmation = (props) => {
   const { appState, setAppState } = React.useContext(AppContext);
   const { orderId } = props;
   console.log(orderId);
@@ -11,13 +11,13 @@ const Thanks = (props) => {
   };
   return (
     <div>
-      <h1>Order Placed. Your order number is {orderId} </h1>
+      <h1>Your order number is {orderId} </h1>
 
       <Link to="/" onClick={() => resetCart()}>
-        <button>click to go to home page</button>
+        <button>click to confirm order</button>
       </Link>
     </div>
   );
 };
 
-export default Thanks;
+export default OrderConfirmation;

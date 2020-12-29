@@ -25,3 +25,17 @@ body {
 .text-bright {
   color: var(--lightBlue);
 }
+
+// .container {
+//   display: flex;
+//   flex-flow: row wrap;
+// }
+
+footer {
+  position: sticky;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
