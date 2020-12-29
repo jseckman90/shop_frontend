@@ -30,7 +30,13 @@ const Items = (props) => {
     );
   };
 
-  return products.length > 0 ? loaded() : <h3>Loading...</h3>;
+  return products.length > 0 ? (
+    loaded()
+  ) : (
+    <h3 style={{ textAlign: "center" }}>
+      <i fontSize="large" class="fas fa-spinner fa-pulse fa-5x"></i>
+    </h3>
+  );
 };
 
 export default Items;
