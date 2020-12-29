@@ -36,12 +36,12 @@ const Cart = (props) => {
     });
   };
 
-  const handleDelete = async (productId, orderId) => {
+  const handleDelete = (productId, orderId) => {
     if (order.order_items.length === 1) {
-      await deleteOrder(orderId);
+      deleteOrder(orderId);
     } else {
-      await deleteItem(productId);
-      await getOrder();
+      deleteItem(productId);
+      getOrder();
     }
   };
 

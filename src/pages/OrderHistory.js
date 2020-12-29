@@ -39,13 +39,6 @@ const OrderHistory = (props) => {
     getOrders();
   }, []);
 
-  // let orderPrice = [];
-
-  // const orderTotal = orderPrice.reduce(
-  //   (accumulator, currentValue) =>
-  //     parseFloat(accumulator) + parseFloat(currentValue)
-  // );
-
   const loaded = () => {
     return (
       <Grid item container className={classes.margin}>
