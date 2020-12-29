@@ -17,7 +17,7 @@ export const AppContext = React.createContext(null);
 
 function App() {
   const [appState, setAppState] = React.useState({
-    url: "https://jsshopbackend.herokuapp.com/",
+    url: "https://jsshopbackend.herokuapp.com",
     product: null,
     inCart: false,
     orderId: null,
