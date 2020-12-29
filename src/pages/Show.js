@@ -8,10 +8,11 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import { Grid } from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    width: 500,
   },
 });
 
@@ -64,54 +65,41 @@ const Show = (props) => {
   };
 
   return (
-    <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          alt="Contemplative Reptile"
-          height="300"
-          image={product.img}
-          title="Contemplative Reptile"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Lizard
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions>
-    </Card>
-
-    // <div>
-    //   <div className="card" style={{ width: "18rem" }}>
-    //     <img src={product.img} className="card-img-top" alt={product.name} />
-    //     <div className="card-body">
-    //       <h5 className="card-title">{product.name}</h5>
-    //       <p className="card-text">{product.price}</p>
-    //       <p className="card-text">{product.description}</p>
-    //       <Button
-    //         variant="contained"
-    //         size="large"
-    //         color="primary"
-    //         onClick={() => {
-    //           isUserLoggedIn();
-    //         }}>
-    //         <i class="fas fa-cart-plus"></i>
-    //       </Button>
-    //     </div>
-    //   </div>
-    // </div>
+    <Grid container justify="center">
+      <Card className={classes.root}>
+        <CardActionArea>
+          <CardMedia
+            component="img"
+            alt="Contemplative Reptile"
+            height="700"
+            image={product.img}
+            title="Contemplative Reptile"
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">
+              {product.name}
+            </Typography>
+            <Typography variant="h6" color="textSecondary" component="p">
+              {product.price}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {product.description}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+        <CardActions>
+          <Button
+            variant="contained"
+            fullWidth={true}
+            color="primary"
+            onClick={() => {
+              isUserLoggedIn();
+            }}>
+            <i class="fas fa-cart-plus"></i>
+          </Button>
+        </CardActions>
+      </Card>
+    </Grid>
   );
 };
 

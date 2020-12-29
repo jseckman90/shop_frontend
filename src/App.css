@@ -26,10 +26,10 @@ body {
   color: var(--lightBlue);
 }
 
-// .container {
+/* // .container {
 //   display: flex;
 //   flex-flow: row wrap;
-// }
+// } */
 
 footer {
   position: sticky;

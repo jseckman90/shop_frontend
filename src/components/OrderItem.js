@@ -1,17 +1,15 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import clsx from "clsx";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
-import Collapse from "@material-ui/core/Collapse";
+
 import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
+
 import Typography from "@material-ui/core/Typography";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
+
 import Button from "@material-ui/core/Button";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 
@@ -65,25 +63,13 @@ const OrderItem = (props) => {
       </CardContent>
       <CardActions>
         <Button size="small" color="primary">
-          <DeleteForeverIcon fontSize="large" />
+          <DeleteForeverIcon
+            fontSize="large"
+            onClick={() => handleDelete(product.id, product.order_id)}
+          />
         </Button>
       </CardActions>
     </Card>
-
-    // <div>
-    //   <div className="card" style={{ width: "18rem" }}>
-    //     <img src={product.img} class="card-img-top" alt={product.name} />
-    //     <div className="card-body">
-    //       <h5 className="card-title">{product.name}</h5>
-    //       <p className="card-text">{product.price}</p>
-    //       <div
-    //         className="btn btn-danger"
-    //         onClick={() => handleDelete(product.id, product.order_id)}>
-    //         <i class="fas fa-trash-alt"></i>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
   );
 };
 

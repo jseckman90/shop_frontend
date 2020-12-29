@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     minHeight: "100vh",
+    textAlign: "center",
   },
   main: {
     marginTop: theme.spacing(8),

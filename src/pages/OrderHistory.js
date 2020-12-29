@@ -19,6 +19,7 @@ const useStyles = makeStyles({
   margin: {
     margin: 10,
     justifyContent: "space-evenly",
+    textAlign: "center",
   },
 });
 
@@ -38,16 +39,24 @@ const OrderHistory = (props) => {
     getOrders();
   }, []);
 
+  // let orderPrice = [];
+
+  // const orderTotal = orderPrice.reduce(
+  //   (accumulator, currentValue) =>
+  //     parseFloat(accumulator) + parseFloat(currentValue)
+  // );
+
   const loaded = () => {
     return (
-      <Grid item container style={{ border: "2px solid red" }}>
+      <Grid item container className={classes.margin}>
+        <h1>Order History</h1>
         {orders.map((order) =>
           userId === order.user_id ? (
-            <Grid item xs={12} sm={4}>
+            <Grid item xs={12} sm={12}>
               <Card
                 className={classes.root}
+                className={classes.margin}
                 style={{
-                  border: "2px solid black",
                   margin: "10px",
                   padding: "10px",
                 }}>
@@ -56,31 +65,32 @@ const OrderHistory = (props) => {
                 </Typography>
 
                 <div>
-                  <h5>Items:</h5>
                   <div className={classes.margin} style={{ display: "flex" }}>
-                    {order.order_items.map((product) => (
-                      <>
-                        <Card
-                          className={classes.root}
-                          className={classes.margin}>
-                          <CardActionArea>
-                            <CardMedia
-                              className={classes.media}
-                              image={product.img}
-                              title={product.name}
-                            />
-                            <CardContent>
-                              <Typography
-                                gutterBottom
-                                variant="h5"
-                                component="h2">
-                                {product.name}
-                              </Typography>
-                            </CardContent>
-                          </CardActionArea>
-                        </Card>
-                      </>
-                    ))}
+                    {order.order_items.map((product) => {
+                      return (
+                        <>
+                          <Card
+                            className={classes.root}
+                            className={classes.margin}>
+                            <CardActionArea>
+                              <CardMedia
+                                className={classes.media}
+                                image={product.img}
+                                title={product.name}
+                              />
+                              <CardContent>
+                                <Typography
+                                  gutterBottom
+                                  variant="h6"
+                                  component="h2">
+                                  {product.name}
+                                </Typography>
+                              </CardContent>
+                            </CardActionArea>
+                          </Card>
+                        </>
+                      );
+                    })}
                   </div>
                 </div>
               </Card>
