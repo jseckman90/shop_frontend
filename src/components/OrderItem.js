@@ -5,11 +5,8 @@ import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
-
 import Avatar from "@material-ui/core/Avatar";
-
 import Typography from "@material-ui/core/Typography";
-
 import Button from "@material-ui/core/Button";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 
@@ -19,10 +16,12 @@ const OrderItem = (props) => {
   const useStyles = makeStyles((theme) => ({
     root: {
       maxWidth: 345,
+      margin: 5,
     },
     media: {
       height: 0,
       paddingTop: "56.25%", // 16:9
+      height: 450,
     },
     expand: {
       transform: "rotate(0deg)",

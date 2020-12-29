@@ -6,7 +6,6 @@ import { makeStyles } from "@material-ui/styles";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import IconButton from "@material-ui/core/IconButton";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import { blue, yellow } from "@material-ui/core/colors";
 
 const useStyles = makeStyles(() => ({
   typographyStyles: {
@@ -20,7 +19,7 @@ const useStyles = makeStyles(() => ({
 
 const Nav = (props) => {
   const { appState, setAppState } = React.useContext(AppContext);
-  const { inCart, token } = appState;
+  const { token } = appState;
   const classes = useStyles();
 
   return (
@@ -42,35 +41,7 @@ const Nav = (props) => {
               </Link>
             ) : null}
           </Typography>
-          <Typography className={classes.typographyStyles}>
-            {token ? (
-              <Link
-                to="/"
-                onClick={() =>
-                  setAppState({
-                    ...appState,
-                    token: null,
-                    userId: null,
-                    inCart: false,
-                  })
-                }>
-                Log Out
-              </Link>
-            ) : null}
-          </Typography>
-          <Typography className={classes.typographyStyles}>
-            {!token ? (
-              <>
-                <Link to="/login" class="nav-link">
-                  Login
-                </Link>
 
-                <Link to="/signup" class="nav-link">
-                  Signup
-                </Link>
-              </>
-            ) : null}
-          </Typography>
           <IconButton>
             <Link to="/login">
               {token ? (
@@ -80,13 +51,32 @@ const Nav = (props) => {
               ) : null}
             </Link>
           </IconButton>
-
-          <IconButton>
-            <Link to="/login">
-              <AccountCircleIcon fontSize="large" />
+          {!token ? (
+            <>
+              <IconButton>
+                <Link to="/login">
+                  <AccountCircleIcon fontSize="large" />
+                </Link>
+              </IconButton>
+            </>
+          ) : (
+            <Link
+              to="/"
+              onClick={() =>
+                setAppState({
+                  ...appState,
+                  token: null,
+                  userId: null,
+                  inCart: false,
+                })
+              }>
+              Log Out
             </Link>
-          </IconButton>
-          {/* <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          )}
+        </Toolbar>
+      </AppBar>
+
+      {/* <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <Link to="/" className="navbar-brand">
             <img src="/logo.png" style={{ height: "7em" }} />
           </Link>
@@ -165,8 +155,6 @@ const Nav = (props) => {
             ) : null}
           </div>
         </nav> */}
-        </Toolbar>
-      </AppBar>
     </div>
   );
 };

@@ -92,7 +92,7 @@ const Form = (props) => {
           </Button>
           <Grid container>
             <Grid item>
-              <Link to="/signup" variant="body2">
+              <Link to="/signup" variant="body2" className="signup">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
@@ -100,25 +100,6 @@ const Form = (props) => {
         </form>
       </div>
     </Container>
-
-    // <form onSubmit={handleSubmit}>
-    //   <h2>{label}</h2>
-    //   <input
-    //     name="username"
-    //     placeholder="username"
-    //     value={formData.username}
-    //     type="text"
-    //     onChange={handleChange}
-    //   />
-    //   <input
-    //     name="password"
-    //     placeholder="password"
-    //     value={formData.password}
-    //     type="password"
-    //     onChange={handleChange}
-    //   />
-    //   <input value={label} type="submit" className="submit-button" />
-    // </form>
   );
 };
 

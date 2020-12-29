@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { AppContext } from "../App";
+import Button from "@material-ui/core/Button";
 
 const CheckOut = (props) => {
   const { appState, setAppState } = React.useContext(AppContext);
@@ -17,17 +18,20 @@ const CheckOut = (props) => {
   );
 
   return (
-    <div>
-      <h1>Your Cart</h1>
-      <hr />
+    <div style={{ textAlign: "center" }}>
+      <h1>Order Summary</h1>
+
       <h3>Order Number: {orderId}</h3>
 
-      <hr />
-      <h1>Total</h1>
-      <h2>${parseFloat(orderTotal).toFixed(2)}</h2>
+      <h1>Total: ${parseFloat(orderTotal).toFixed(2)}</h1>
+      <h2></h2>
       <Link to="/orderconfirmation" orderId={orderId}>
-        <button>Check Out</button>
+        <Button variant="outlined" color="primary">
+          Checkout
+        </Button>
       </Link>
+
+      <hr />
     </div>
   );
 };

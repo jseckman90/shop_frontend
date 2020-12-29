@@ -7,7 +7,7 @@
 }
 
 body {
-  font-family: "Oswald", sans-serif !important;
+  font-family: "Neucha", sans-serif !important;
   background: var(--mainWhite) !important;
   color: var(--mainDark) !important;
 }
@@ -26,10 +26,9 @@ body {
   color: var(--lightBlue);
 }
 
-/* // .container {
-//   display: flex;
-//   flex-flow: row wrap;
-// } */
+.signup {
+  color: var(--mainBlue);
+}
 
 footer {
   position: sticky;
