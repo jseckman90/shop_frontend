@@ -1,6 +1,7 @@
 import React from "react";
 import { AppContext } from "../App";
 import Product from "../components/Product";
+
 import { Grid } from "@material-ui/core";
 
 const Items = (props) => {

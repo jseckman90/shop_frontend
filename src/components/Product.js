@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
 import { AppContext } from "../App";
+
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import Card from "@material-ui/core/Card";
@@ -24,14 +25,12 @@ const Product = (props) => {
     setAppState({ ...appState, product: product });
   };
 
-  const history = useHistory();
-
   const isUserLoggedIn = () => {
     if (userId && token) {
       console.log(userId);
       createOrder(product);
     } else {
-      history.push("/login");
+      props.history.push("/login");
     }
   };
 
@@ -117,6 +116,7 @@ const Product = (props) => {
           title="Product"
         />
       </Link>
+
       <CardContent>
         {/* <Typography
           variant="headline"
