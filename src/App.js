@@ -28,7 +28,7 @@ function App() {
 
   return (
     <AppContext.Provider value={{ appState, setAppState }}>
-      <Grid conatiner direction="column">
+      <Grid container direction="column">
         <Grid item>
           <Header />
         </Grid>

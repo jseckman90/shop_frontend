@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 import { AppContext } from "../App";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
@@ -23,17 +24,20 @@ const Product = (props) => {
     setAppState({ ...appState, product: product });
   };
 
+  const history = useHistory();
+
   const isUserLoggedIn = () => {
     if (userId && token) {
       console.log(userId);
       createOrder(product);
     } else {
-      props.history.push("/login");
+      history.push("/login");
     }
   };
 
   const createOrder = async (product) => {
     console.log(userId);
+
     if (!inCart) {
       const response = await fetch(`${url}/orders`, {
         method: "POST",
@@ -124,7 +128,7 @@ const Product = (props) => {
           <AddShoppingCartIcon
             fontSize="large"
             onClick={() => {
-              userId && token ? createOrder(product) : <Link to="/login" />;
+              isUserLoggedIn();
             }}
           />
         </IconButton>
@@ -145,31 +149,6 @@ const Product = (props) => {
         </CardContent>
       </Collapse>
     </Card>
-    // <div>
-    //   <div className="card" style={{ width: "18rem" }}>
-    //     <Link
-    //       to="/show"
-    //       onClick={() => {
-    //         handleClick(product);
-    //       }}>
-    //       <img src={product.img} class="card-img-top" alt={product.name} />
-    //     </Link>
-
-    //     <div className="card-body">
-    //       <h5 className="card-title">{product.name}</h5>
-    //       <p className="card-text">{product.price}</p>
-    //       <Button
-    //         variant="contained"
-    //         size="large"
-    //         color="primary"
-    //         onClick={() => {
-    //           userId && token ? createOrder(product) : <Link to="/login" />;
-    //         }}>
-    //         <i class="fas fa-cart-plus"></i>
-    //       </Button>
-    //     </div>
-    //   </div>
-    // </div>
   );
 };
 
